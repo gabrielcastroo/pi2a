@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="criar_partida.css"> <!-- Link para o arquivo de estilo -->
-    <title>Criando Partida</title>
+    <title>Atualizar Partida</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 <body>
     <div id="header">
-        <h1>Criando Partida</h1>
+        <h1>Atualizar Partida</h1>
     </div>
 
     <div id="content">
-        <h2>Partida</h2>
+        <h2>Atualizando Dados</h2>
         <form id="partidaForm">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" placeholder="id"><br><br>
+            
             <label for="dataHoraPartida">Data e Hora:</label>
             <input type="datetime-local" id="dataHoraPartida" name="dataHoraPartida" required><br><br>
 
@@ -115,23 +118,19 @@
             <label for="localPartida" class="localPartida">Local:</label>
             <input type="text" id="localPartida" name="localPartida" required><br><br>
             
-            <label for="idGerado">ID Gerado:</label>
-            <input type="text" id="idGerado" name="idGerado" readonly><br><br>
-
             <!-- Campo para exibir o resultado -->
             <div id="resultadoPartida" style="display: none;">
                 <label for="vencedor">Vencedor:</label>
                 <input type="text" id="vencedor" name="vencedor" readonly>
             </div>
     
-            <button type="submit">Criar Partida</button>
+            <button type="submit">Atualizar Partida</button>
         </form>
     </div>
     
 
     <div id="footer">
         <a href="home.html">Voltar para Home</a>
-        <a href="criar_atleta.html">Criar Atleta</a>
     </div>
 
     <script src="script_criar_partida.js"></script> <!-- Script JavaScript -->

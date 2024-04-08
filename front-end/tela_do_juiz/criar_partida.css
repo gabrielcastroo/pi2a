@@ -142,6 +142,7 @@ input[type="datetime-local"] {
     margin-top: 80px;
 }
 
+
 @media screen and (max-width: 550px) {
     #atletasContainer {
         grid-template-columns: repeat(1, 1fr); 
