@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional, List
 
 class AthleteDTO(BaseModel):
     id: int
@@ -7,7 +8,7 @@ class AthleteDTO(BaseModel):
     country: str
     height: float
     weight: float
-    best_times: list
+    best_times: Optional[list] = None
     team: str
     specializations: list
     medal_history: list
@@ -22,6 +23,7 @@ class JudgeDTO(BaseModel):
     country: str
     certification_level: str
     arbitration_category: list
+    associated_matches: Optional[List[MatchDTO]]
 
 class MatchDTO(BaseModel):
     id: int
@@ -29,7 +31,7 @@ class MatchDTO(BaseModel):
     match_type: str
     distance: float
     match_status: str
-    judge: list
+    judges: Optional[List[JudgeDTO]]
     location: str
-    athletes_involved: list
+    athletes_involved: List[AthleteDTO]
     result: str
