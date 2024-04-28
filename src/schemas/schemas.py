@@ -1,37 +1,46 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, ForwardRef
+from datetime import datetime
 
 class AthleteDTO(BaseModel):
-    id: int
     name: str
-    birth_date: DateTime
+    birth_date: datetime
     country: str
     height: float
     weight: float
-    best_times: Optional[list] = None
+    best_times: str
     team: str
-    specializations: list
-    medal_history: list
-    modality: list
+    specializations: str
+    medal_history: str
+    modality: str
+
+    class Config:
+        orm_mode = True
+
+MatchDTO = ForwardRef("MatchDTO")
 
 class JudgeDTO(BaseModel):
-    id: int
     name: str
     surname: str
     email: str
     password: str
     country: str
     certification_level: str
-    arbitration_category: list
-    associated_matches: Optional[List[MatchDTO]]
+    arbitration_category: str
+    associated_matches: str
+
+    class Config:
+        orm_mode = True
 
 class MatchDTO(BaseModel):
-    id: int
-    datetime: DateTime
+    datetime: datetime
     match_type: str
     distance: float
     match_status: str
-    judges: Optional[List[JudgeDTO]]
+    judges: str
     location: str
-    athletes_involved: List[AthleteDTO]
+    athletes_involved: str
     result: str
+
+    class Config:
+        orm_mode = True
