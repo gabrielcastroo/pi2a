@@ -10,6 +10,10 @@
 
 [Acessar figma](https://www.figma.com/file/XGms63iHMtclEYLN2IIKhe/Natação-Olímpica?type=design&node-id=0-1&mode=design&t=k2CIAC8w9sMWvsDe-0)
 
+## Link para documentação da API em execução na aws (Figma)
+
+[Acessar Documentação](http://ec2-44-201-200-110.compute-1.amazonaws.com/docs)
+
 ## Requisitos
 
 Antes de começar, certifique-se de que você tem os seguintes requisitos instalados:
