@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
-from src.infra.orm.repository import athlete_repository
+from src.infra.orm.repository import athlete_repository,match_repository
 from src.infra.orm.config import database
 from src.schemas import schemas
 from src.infra.orm.config.database import get_db, create_db
@@ -48,3 +48,35 @@ def update_athlete_controller(athlete_id: int, athlete: schemas.AthleteDTO, db: 
     if not existing_athlete:
         raise HTTPException(status_code=404, detail="Athlete not found")
     return athlete_repo.update_athlete(athlete_id, athlete)
+
+@app.get('/matches')
+def get_matches_controller(db: Session = Depends(get_db)):
+    matches = match_repository.MatchRepository(db=db).get_matches()
+    return matches
+
+@app.get('/match/{id}')
+def get_match_controller(id:int, db: Session = Depends(get_db)):
+    match = match_repository.MatchRepository(db=db).get_match(id)
+    return match
+
+@app.post('/match')
+def create_match_controller(match: schemas.MatchDTO, db: Session = Depends(get_db)):
+    match = match_repository.MatchRepository(db=db).create(match=match)
+    return match
+
+@app.delete("/match/{match_id}")
+def delete_match_controller(match_id: int, db: Session = Depends(get_db)):
+    match_repo = match_repository.MatchRepository(db)
+    match = match_repo.get_match(match_id)
+    if not match:
+        raise HTTPException(status_code=404, detail="Match not found")
+    match_repo.delete_match(match_id)
+    return {"message": "Match deleted successfully", "match": match}
+
+@app.put("/match/{match_id}")
+def update_match_controller(match_id: int, match_dto: schemas.MatchDTO, db: Session = Depends(get_db)):
+    match_repo = match_repository.MatchRepository(db)
+    match = match_repo.get_match(match_id)
+    if not match:
+        raise HTTPException(status_code=404, detail="Match not found")
+    return match_repo.update_match(match_id, match_dto)
