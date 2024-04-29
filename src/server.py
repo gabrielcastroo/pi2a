@@ -1,13 +1,21 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
-from src.infra.orm.repository import athlete_repository,match_repository
+from src.infra.orm.repository import athlete_repository,match_repository,judge_repository
 from src.infra.orm.config import database
 from src.schemas import schemas
 from src.infra.orm.config.database import get_db, create_db
 
 create_db()
 
-app = FastAPI()
+title_project = "Projeto PI2A - Natação Olímpica"
+description_project = "O SGE tem como objetivo principal facilitar o gerenciamento de competições esportivas, permitindo o registro de atletas, a criação de partidas."
+contact_project={
+    "name": "Gabriel Silva de Castro",
+    "url": "https://github.com/gabrielcastroo/pi2a",
+    "email": "gabriel.castro@iesb.edu.br",
+}
+
+app = FastAPI(title=title_project, description=description_project, contact=contact_project)
 
 @app.get('/is_running')
 def is_running():
@@ -80,3 +88,35 @@ def update_match_controller(match_id: int, match_dto: schemas.MatchDTO, db: Sess
     if not match:
         raise HTTPException(status_code=404, detail="Match not found")
     return match_repo.update_match(match_id, match_dto)
+
+@app.get('/judges')
+def get_judges_controller(db: Session = Depends(get_db)):
+    judges = judge_repository.JudgeRepository(db=db).get_judges()
+    return judges
+
+@app.get('/judge/{id}')
+def get_judge_controller(id:int, db: Session = Depends(get_db)):
+    judge = judge_repository.JudgeRepository(db=db).get_judge(id)
+    return judge
+
+@app.post('/judge')
+def create_judge_controller(judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db)):
+    judge = judge_repository.JudgeRepository(db=db).create(judge=judge_dto)
+    return judge
+
+@app.delete("/judge/{judge_id}")
+def delete_judge_controller(judge_id: int, db: Session = Depends(get_db)):
+    judge_repo = judge_repository.JudgeRepository(db)
+    judge = judge_repo.get_judge(judge_id)
+    if not judge:
+        raise HTTPException(status_code=404, detail="Judge not found")
+    judge_repo.delete_judge(judge_id)
+    return {"message": "Judge deleted successfully", "judge_deleted": judge}
+
+@app.put("/judge/{judge_id}")
+def update_judge_controller(judge_id: int, judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db)):
+    judge_repo = judge_repository.JudgeRepository(db)
+    judge = judge_repo.get_judge(judge_id)
+    if not judge:
+        raise HTTPException(status_code=404, detail="Judge not found")
+    return judge_repo.update_judge(judge_id, judge_dto)
