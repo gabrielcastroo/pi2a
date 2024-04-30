@@ -4,6 +4,7 @@ from src.infra.orm.repository import athlete_repository,match_repository,judge_r
 from src.infra.orm.config import database
 from src.schemas import schemas
 from src.infra.orm.config.database import get_db, create_db
+from fastapi.middleware.cors import CORSMiddleware
 
 create_db()
 
@@ -16,6 +17,16 @@ contact_project={
 }
 
 app = FastAPI(title=title_project, description=description_project, contact=contact_project)
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get('/is_running')
 def is_running():
