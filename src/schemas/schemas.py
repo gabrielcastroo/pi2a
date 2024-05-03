@@ -32,6 +32,19 @@ class JudgeDTO(BaseModel):
     class Config:
         orm_mode = True
 
+class JudgePublicDTO(BaseModel):
+    id: int
+    name: str
+    surname: str
+    email: str
+    country: str
+    certification_level: str
+    arbitration_category: str
+    associated_matches: str
+
+    class Config:
+        orm_mode = True
+
 class MatchDTO(BaseModel):
     datetime: datetime
     match_type: str
