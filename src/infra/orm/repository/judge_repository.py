@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from src.schemas import schemas
 from src.infra.orm.models import models
+from typing import List
 
 class JudgeRepository():
     def __init__(self, db: Session):
@@ -23,7 +24,21 @@ class JudgeRepository():
 
     def get_judges(self):
         judges = self.db.query(models.Judge).all()
-        return judges
+        judgesPublic: List[scheams.JudgePublicDTO] = list()
+        for judge in judges:
+            judgesPublic.append(
+                schemas.JudgePublicDTO(
+                    id=judge.id,
+                    name=judge.name,
+                    surname=judge.surname,
+                    email=judge.email,
+                    country=judge.country,
+                    certification_level=judge.certification_level,
+                    arbitration_category=judge.arbitration_category,
+                    associated_matches=judge.associated_matches
+                )
+            )
+        return judgesPublic
 
     def delete_judge(self, judge_id: int):
         judge = self.db.query(models.Judge).filter(models.Judge.id == judge_id).first()
@@ -43,4 +58,15 @@ class JudgeRepository():
         return None
     
     def get_judge(self, judge_id: int):
-        return self.db.query(models.Judge).filter(models.Judge.id == judge_id).first()
+        judge = self.db.query(models.Judge).filter(models.Judge.id == judge_id).first()
+        judgePublic = schemas.JudgePublicDTO(
+            id=judge.id,
+            name=judge.name,
+            surname=judge.surname,
+            email=judge.email,
+            country=judge.country,
+            certification_level=judge.certification_level,
+            arbitration_category=judge.arbitration_category,
+            associated_matches=judge.associated_matches
+        )
+        return judgePublic
