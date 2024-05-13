@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
             const paisAtleta = document.createElement('p');
             paisAtleta.textContent = `País: ${atleta.country}`;
+
+            // AQUI
     
             // Adicionando imagens da caneta e da lixeira como links
             const linkEditar = document.createElement('a');
