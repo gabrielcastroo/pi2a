@@ -21,13 +21,13 @@ img {
 #content{
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 /*====  HEADER ============================ */
 
 #header {
     height: 6.25rem;
-    width: 100vw;
     display: flex;
     background-color: #0A0E13;
 }
@@ -35,9 +35,10 @@ img {
 /*====  Side Left ==== */
 
 .side-left {
-    width: 37.5rem;
+    width: 39rem;
     display: flex;
     justify-content: space-between;
+    background-color: red;
 }
 
 .background-menu {
@@ -50,6 +51,7 @@ img {
     align-items: center;
     justify-content: center;
     margin-left: 1.8rem;
+    cursor: pointer;
 }
 
 .menu-icon {
@@ -67,7 +69,7 @@ img {
 /*====  Side Right ==== */
 
 .side-right {
-    width: 82.469rem;
+    width: 82.313rem;
     display: flex;
     justify-content: space-between;
 }
@@ -82,6 +84,7 @@ img {
     align-items: center;
     justify-content: center;
     margin-right: 1.8rem;
+    cursor: pointer;
 }
 
 .user-icon {
@@ -100,8 +103,6 @@ img {
 #filter-container {
     display: flex;
     flex-direction: column;
-    width: 37.5rem;
-    height: 61.25rem;
     background-color: #0A0E13;
 }
 
@@ -128,8 +129,8 @@ img {
 }
 
 .option-container {
-    height: 12.5rem;
-    width: 37.5rem;
+    height: 11rem;
+    width: 37.688rem;
     display: flex;
     flex-direction: column;
 }
@@ -154,7 +155,6 @@ img {
 /*====  MATCHMAKING ========================= */
 
 #matchmaking-container{
-    height: 61.25rem;
     width: 82.5rem;
     background-color: #0F1519;
     display: flex;
@@ -221,13 +221,6 @@ img {
     gap: 5px;
 }
 
-/* .vertical-match-line{
-    height: 15.125rem;
-    width: 1.2px;
-    background-color: #727272;
-    border-radius: 10%;
-    position: absolute;
-} */
 
 .right-swimmer-side-container{
     display: flex;
@@ -260,19 +253,7 @@ img {
     border-radius: 10%;
     margin-inline: auto;
     margin-top: 2rem;
-    position: absolute;
-    top: 318px;
-    left: 650px;
+    position: relative;
 }
 
-.horizontal-match-line2{
-    width: 75rem;
-    height: 1.2px;
-    background-color: #727272;
-    border-radius: 10%;
-    margin-inline: auto;
-    margin-top: 2rem;
-    position: absolute;
-    top: 568px;
-    left: 650px;
-}
+/*====  COVER PAGE ========================= */
