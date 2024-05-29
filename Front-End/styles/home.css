@@ -18,27 +18,32 @@ img {
     height: auto;
 }
 
+body{
+    overflow: hidden;
+}
+
 #content{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100vh - 100px);
+    overflow: hidden;
 }
 
 /*====  HEADER ============================ */
 
 #header {
-    height: 6.25rem;
+    height: 100px;
     display: flex;
     background-color: #0A0E13;
+    overflow: hidden;
 }
 
 /*====  Side Left ==== */
 
 .side-left {
-    width: 39rem;
+    width: 350px;
     display: flex;
     justify-content: space-between;
-    background-color: red;
 }
 
 .background-menu {
@@ -69,7 +74,7 @@ img {
 /*====  Side Right ==== */
 
 .side-right {
-    width: 82.313rem;
+    width: calc(100% - 350px);
     display: flex;
     justify-content: space-between;
 }
@@ -104,6 +109,7 @@ img {
     display: flex;
     flex-direction: column;
     background-color: #0A0E13;
+    width: 350px;
 }
 
 .title-container {
@@ -130,7 +136,6 @@ img {
 
 .option-container {
     height: 11rem;
-    width: 37.688rem;
     display: flex;
     flex-direction: column;
 }
@@ -147,7 +152,7 @@ img {
 
 .horizontal-line {
     height: 1.2px;
-    width: 34.313rem;
+    width: 250px;
     background-color: #727272;
     margin-inline: auto;
 }
@@ -155,19 +160,19 @@ img {
 /*====  MATCHMAKING ========================= */
 
 #matchmaking-container{
-    width: 82.5rem;
+    width: calc(100% - 350px);
     background-color: #0F1519;
     display: flex;
     flex-direction: column;
+    padding: 50px;
 }
 
 .match-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75.875rem;
-    height: 15.625rem;
-    margin-inline: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .match-day{
@@ -254,6 +259,7 @@ img {
     margin-inline: auto;
     margin-top: 2rem;
     position: relative;
+    margin-block: 32px;
 }
 
 /*====  COVER PAGE ========================= */
