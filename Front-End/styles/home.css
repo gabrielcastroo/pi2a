@@ -173,7 +173,7 @@ body{
     justify-content: space-between;
     overflow-x: auto;
     overflow-y: hidden;
-}
+} 
 
 .match-day{
     margin-block: auto;
@@ -196,9 +196,9 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 48.625rem;
+    /* width: 48.625rem; */
     margin-block: auto;
-    gap: 1rem;
+    gap: 10rem;
 }
 
 .swimmer-container{
@@ -207,13 +207,13 @@ body{
 }
 
 .swimmer-text{
-    width: 22.625rem;
+    width: 20rem;
     margin-block: auto;
     font-family: "Poppins", sans-serif;
     font-size: 18px;
     font-weight: 400;
     font-style: normal;
-    color: white
+    color: white;
 }
 
 .icon-flag{
@@ -263,3 +263,102 @@ body{
 }
 
 /*====  COVER PAGE ========================= */
+
+/* #coverPage{
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0F1519;
+    transition: top 0.5s ease;
+}
+
+#coverPage.visible{
+    top: 0;
+ */
+#coverPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.background-close-menu{
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 32px;
+    margin-top: 32px;
+}
+
+.close-icon{
+    width: 24px;
+}
+
+.menu-options-container{
+    width: 500px;
+    height: 85vh;
+    margin-inline: auto;
+    margin-block: auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.side-menu-options-container{
+    width: 420px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.side-menu{
+    background: #000000;
+    width:  600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.side-menu-title{
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+}
+
+.side-menu-option{
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    cursor: pointer;
+    height: 36px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.side-menu-option:hover{
+    background-color: #7CA5BF;
+    border-radius: 5px;
+}
+
+.menu-image{
+    width: calc(100% - 600px);
+    height: 100vh;
+    margin-left: auto;
+}
+
+.menu-image img{
+    height: 100vh;
+}
