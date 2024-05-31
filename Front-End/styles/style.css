@@ -96,19 +96,19 @@ img {
 }
 
 .menu-color1{
-  background-color: #22031F;
+  background-color: #858AE3;
 }
 
 .menu-color2{
-  background-color: #432818;
+  background-color: #7A5C61;
 }
 
 .menu-color3{
-  background-color: #1F271B;
+  background-color: #97DFFC;
 }
 
 .menu-color4{
-  background-color: #37000A;
+  background-color: #D5C6E0;
 }
 
 .hero-header .header-item-container{
@@ -127,7 +127,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #F9F9F9;
+  background-color: #051325;
+  color: white;
   opacity: 1;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -148,7 +149,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #F9F9F9;
+  background-color: #051325;
+  color: white;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -168,7 +170,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #F9F9F9;
+  background-color: #051325;
+  color: white;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -188,7 +191,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 100px;
-  background-color: #F9F9F9;
+  background-color: #051325;
+  color: white;
   transition: all 0.3s ease;
 }
 
@@ -227,12 +231,36 @@ img {
 /*=============== MAIN ==================*/
 
 body{
-  background-color: #F9F9F9;
+  background-color: #051325;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+  height: 12px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Estilo do "thumb" da barra de rolagem (a parte que você pode arrastar) */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(182, 39, 39); /* Cor do thumb */
+  border-radius: 6px; /* Bordas arredondadas */
+  border: 3px solid transparent; /* Espaço ao redor do thumb */
+  background-clip: content-box; /* Faz com que a cor do background não cubra o espaço */
+}
+
+/* Estilo do "track" da barra de rolagem (a trilha por onde o thumb se move) */
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Cor do track */
+  border-radius: 6px; /* Bordas arredondadas */
+}
+
+/* Estilo do "corner" da barra de rolagem (o canto onde as barras de rolagem horizontal e vertical se encontram) */
+::-webkit-scrollbar-corner {
+  background-color: #f0f0f0; /* Cor do canto */
 }
 
 main{
   height: 3500px;
-  background-color: #F9F9F9;
+  background-color: #051325;
   padding-left: 14rem;
   max-width: calc(224px + 770px);
 }
@@ -254,20 +282,7 @@ main .logo{
   font-weight: 400;
   font-style: normal;
   font-size: 38px;
-}
-
-.paragraph{
-  font-family: "Source Sans 3", sans-serif;
-  width: 765px;
-  padding-top: 80px;
-  font-size: 18px;
-}
-
-.paragraph-title{
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
+  color: white;
 }
 
 .title{
@@ -276,9 +291,42 @@ main .logo{
   font-weight: 400;
   font-style: normal;
   font-size: 24px;
+  color: white;
 }
 
+.paragraph-title{
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: white;
+}
+
+.paragraph{
+  font-family: "Source Sans 3", sans-serif;
+  width: 765px;
+  padding-top: 80px;
+  font-size: 18px;
+  color: white;
+}
+
+
+
 /*=============== FOOTER ==================*/
+
+.names-container{
+  margin-block: auto;
+  display: flex;
+  flex-direction: column;
+  gap:  1.25rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  padding-left: 960px;
+  color: #051325;
+}
 
 .social-icons-container{
   height: 20rem;
@@ -288,8 +336,20 @@ main .logo{
   justify-content: center;
   right: 5%;
   gap: 1.25rem;
-  padding-right: 100px;
+  padding-right: 224px;
   position: absolute;
+}
+
+.social-button{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.github-button{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .github-icons-container{
@@ -300,7 +360,7 @@ main .logo{
   justify-content: center;
   margin-left: auto;
   gap: 1.25rem;
-  padding-right: 280px;
+  padding-right: 400px;
 }
 
 .social-icon{
@@ -314,6 +374,7 @@ main .logo{
 }
 
 .footer{
-  background-color: #051325;
+  display: flex;
+  background-color: #E1CA96;
   height: 20rem;
 }
