@@ -9,6 +9,18 @@ body {
 display: none;
 }
 
+#dataHoraPartida{
+display: none;
+}
+
+#localPartida{
+    display: none;
+    }
+
+#match_status{
+        display: none;
+        }
+
 #header {
     background-color: #007bff;
     color: #fff;
