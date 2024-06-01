@@ -69,11 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const partidaDiv = document.createElement('div');
             partidaDiv.classList.add('partida');
 
-            const dataPartida = document.createElement('h3');
-            dataPartida.textContent = `Data e Hora: ${partida.datetime}`;
+              const elements_match = document.createElement('div');
+              elements_match.classList.add('elements_match');
 
-            const localPartida = document.createElement('p');
-            localPartida.textContent = `Local: ${partida.location}`;
+              const dataPartida = document.createElement('h3');
+              dataPartida.textContent = `Data e Hora: ${partida.datetime}`;
+
+              const localPartida = document.createElement('p');
+              localPartida.textContent = `Local: ${partida.location}`;
 
             const tipoPartida = document.createElement('p');
             tipoPartida.textContent = `Tipo de Partida: ${partida.match_type}`;
@@ -125,17 +128,19 @@ document.addEventListener('DOMContentLoaded', function() {
             iconsDiv.appendChild(linkExcluir);
             iconsDiv.appendChild(linkEfetivar);
 
-            partidaDiv.appendChild(dataPartida);
-            partidaDiv.appendChild(localPartida);
-            partidaDiv.appendChild(tipoPartida);
-            partidaDiv.appendChild(distanciaPartida);
-            partidaDiv.appendChild(atletasPartida);
-            partidaDiv.appendChild(statusPartida);
-            partidaDiv.appendChild(juizesPartida);
-            partidaDiv.appendChild(resultadoPartida);
+            elements_match.appendChild(dataPartida);
+            elements_match.appendChild(localPartida);
+            elements_match.appendChild(distanciaPartida);
+            elements_match.appendChild(tipoPartida);
+            elements_match.appendChild(atletasPartida);
+            elements_match.appendChild(statusPartida);
+            elements_match.appendChild(juizesPartida);
+            elements_match.appendChild(resultadoPartida);
             partidaDiv.appendChild(iconsDiv);
+            partidaDiv.appendChild(elements_match)
             
             listaPartidas.appendChild(partidaDiv);
+        
         });
         resultadoBusca.appendChild(listaPartidas);
     }
