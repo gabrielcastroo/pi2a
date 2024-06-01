@@ -9,10 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const weight = parseFloat(document.getElementById('pesoAtleta').value);
         const best_times = document.getElementById('bestTimes').value;
         const medal_history = document.getElementById('medalHistory').value;
-        const specializations = document.getElementById('specializations').value; // Modificado para pegar o valor do campo de texto
         const country = document.getElementById('paisAtleta').value;
         const team = document.getElementById('equipeAtleta').value;
         const modality = document.getElementById('esporteAtleta').value;
+
+        // Coletar especializações selecionadas
+        const specializationsElements = document.querySelectorAll('#especializacoes input[type="checkbox"]:checked');
+        const specializations = Array.from(specializationsElements).map(el => el.value).join(', ');
 
         // Criar objeto novoAtleta
         const novoAtleta = {
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             birth_date: birth_date,
             height: height,
             weight: weight,
-            specializations: specializations, // Modificado para usar o valor do campo de texto
+            specializations: specializations, // Modificado para usar o valor concatenado das especializações
             country: country,
             team: team,
             modality: modality,
@@ -32,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Chamar a função para criar o novo atleta
         await criarAtleta(novoAtleta);
     });
-
 
     async function criarAtleta(novoAtleta) {
         try {

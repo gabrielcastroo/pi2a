@@ -108,14 +108,15 @@ a:hover {
 
 /* Estilizando as caixas de seleção e os rótulos */
 #especializacoes input[type="checkbox"] {
+    margin-right: 5px;
     display: inline-block; /* Alinha as caixas de seleção em linha */
 }
 
 #especializacoes label {
     display: inline-block; /* Alinha os rótulos em linha */
+    margin-right: 20px; /* Espaçamento entre as caixas de seleção e os rótulos */
     font-size: 16px;
     color: #555;
-    margin-right: 20px; /* Espaçamento entre as caixas de seleção e os rótulos */
     margin-bottom: 50px; 
 }
 

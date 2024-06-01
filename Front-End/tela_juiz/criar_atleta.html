@@ -61,7 +61,7 @@
           placeholder="peso"
           required
         /><br /><br />
-        <label for="pesoAtleta">Histórico de Medalha:</label>
+        <label for="medalHistory">Histórico de Medalha:</label>
         <input
           type="text"
           id="medalHistory"
@@ -70,16 +70,22 @@
           required
         /><br /><br />
 
-        <label for="specializations">Especializações:</label>
-        <input
-          type="text"
-          id="specializations"
-          name="specializations"
-          placeholder="Especializações"
-          required
-        /><br /><br />
+        <label>Especializações:</label>
+        <div id="especializacoes">
+          <input type="checkbox" id="peito" name="especializacoes" value="Peito">
+          <label for="peito">Peito</label>
+          <input type="checkbox" id="costas" name="especializacoes" value="Costas">
+          <label for="costas">Costas</label>
+          <input type="checkbox" id="borboleta" name="especializacoes" value="Borboleta">
+          <label for="borboleta">Borboleta</label>
+          <input type="checkbox" id="livre" name="especializacoes" value="Livre">
+          <label for="livre">Livre</label>
+          <input type="checkbox" id="medley" name="especializacoes" value="Medley">
+          <label for="medley">Medley</label>
+        </div>
+        <br /><br />
 
-        <label for="pesoAtleta">Melhores tempos:</label>
+        <label for="bestTimes">Melhores tempos:</label>
         <input
           type="text"
           id="bestTimes"
