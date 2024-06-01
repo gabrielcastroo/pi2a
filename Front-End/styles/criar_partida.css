@@ -8,6 +8,9 @@ body {
 #idPartida{
 display: none;
 }
+#result{
+display: none;
+}
 #header {
     background-color: #007bff;
     color: #fff;

@@ -109,12 +109,21 @@ document.addEventListener('DOMContentLoaded', function() {
             imgLixeira.src = 'https://cdn-icons-png.flaticon.com/512/1214/1214428.png'; // URL da imagem da lixeira
             imgLixeira.alt = 'Excluir';
             linkExcluir.appendChild(imgLixeira);
+
+            const linkEfetivar = document.createElement('a');
+            linkEfetivar.href = `../tela_juiz/efetivar_partida.html?id=${partida.id}`; // Defina o URL de exclusão aqui
+            linkEfetivar.classList.add('link-efetivar');
+            const imgEfetivar = document.createElement('img');
+            imgEfetivar.src = 'https://cdn-icons-png.flaticon.com/512/87/87188.png'; // URL da imagem da lixeira
+            imgEfetivar.alt = 'Efetivar';
+            linkEfetivar.appendChild(imgEfetivar);
     
             // Adicionando os links de edição e exclusão ao bloco da partida
             const iconsDiv = document.createElement('div');
             iconsDiv.classList.add('icons-container');
             iconsDiv.appendChild(linkEditar);
             iconsDiv.appendChild(linkExcluir);
+            iconsDiv.appendChild(linkEfetivar);
 
             partidaDiv.appendChild(dataPartida);
             partidaDiv.appendChild(localPartida);
