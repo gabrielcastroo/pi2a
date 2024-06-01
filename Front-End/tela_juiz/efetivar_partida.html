@@ -19,40 +19,24 @@
     <h2>Atualizando Dados</h2>
     <form id="partidaForm">
 
-      <input type="number" id="idPartida" name="idPartida" placeholder="id" required /><br /><br />
-      <label for="dataHoraPartida">Data e Hora:</label>
-      <input type="datetime-local" id="dataHoraPartida" name="dataHoraPartida" required /><br /><br />
-
+      <input type="number" id="idPartida" name="idPartida" placeholder="id" readonly />
+      
+      <input type="datetime-local" id="dataHoraPartida" name="dataHoraPartida" readonly />
       <label for="specializations">Tipo de Partida:</label>
-      <select id="match_type" name="match_type" required >
-        <option value="0">Selecione</option>
-        <option value="Crawl">Crawl</option>
-        <option value="Peito">Peito</option>
-        <option value="Costas">Costas</option>
-        <option value="Medley">Medley</option>
-      </select><br /><br />
+      <input type="text" id="match_type" name="match_type" readonly />
+       <br /><br />
 
       <label for="distanciaProva">Distância da Prova(m):</label>
-      <select id="distanciaProva" name="distanciaProva" required>
-        <option value="0">Selecione</option>
-        <option value="50">50m</option>
-        <option value="100">100m</option>
-        <option value="200">200m</option>
-        <option value="400">400m</option>
-        <option value="800">800m</option>
-        <option value="1500">1500m</option>
-      </select><br /><br />
+      <input type="text" id="distanciaProva" name="distanciaProva" readonly/>
+      <br /><br />
 
-      <label for="atletasEnvolvidos">Atletas Envolvidos:</label>
-      <input type="text" id="atletasEnvolvidos" name="atletasEnvolvidos" placeholder="Atletas Envolvidos"
-        required /><br /><br />
 
       <!-- Campos dos Atletas -->
       <div id="atletasContainer">
         <div class="atleta">
           <h3>Atleta 1</h3>
           <label for="atleta1Nome">Nome:</label>
-          <input type="text" id="atleta1Nome" name="atleta1Nome" required />
+          <input type="text" id="atleta1Nome" name="atleta1Nome" readonly />
           <label for="atleta1Nome">Tempo:</label>
           <input type="text" id="tempo1" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -60,7 +44,7 @@
         <div class="atleta">
           <h3>Atleta 2</h3>
           <label for="atleta2Nome">Nome:</label>
-          <input type="text" id="atleta2Nome" name="atleta2Nome" required />
+          <input type="text" id="atleta2Nome" name="atleta2Nome" readonly />
           <label for="atleta2Nome">Tempo:</label>
           <input type="text" id="tempo2" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -68,7 +52,7 @@
         <div class="atleta">
           <h3>Atleta 3</h3>
           <label for="atleta3Nome">Nome:</label>
-          <input type="text" id="atleta3Nome" name="atleta3Nome" required />
+          <input type="text" id="atleta3Nome" name="atleta3Nome" readonly />
           <label for="atleta3Nome">Tempo:</label>
           <input type="text" id="tempo3" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -77,7 +61,7 @@
         <div class="atleta">
           <h3>Atleta 4</h3>
           <label for="atleta4Nome">Nome:</label>
-          <input type="text" id="atleta4Nome" name="atleta4Nome" required />
+          <input type="text" id="atleta4Nome" name="atleta4Nome" readonly />
           <label for="atleta4Nome">Tempo:</label>
           <input type="text" id="tempo4" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -86,7 +70,7 @@
         <div class="atleta">
           <h3>Atleta 5</h3>
           <label for="atleta5Nome">Nome:</label>
-          <input type="text" id="atleta5Nome" name="atleta5Nome" required />
+          <input type="text" id="atleta5Nome" name="atleta5Nome" readonly />
           <label for="atleta5Nome">Tempo:</label>
           <input type="text" id="tempo5" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -95,7 +79,7 @@
         <div class="atleta">
           <h3>Atleta 6</h3>
           <label for="atleta6Nome">Nome:</label>
-          <input type="text" id="atleta6Nome" name="atleta6Nome" required />
+          <input type="text" id="atleta6Nome" name="atleta6Nome" readonly />
           <label for="atleta6Nome">Tempo:</label>
           <input type="text" id="tempo6" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -104,7 +88,7 @@
         <div class="atleta">
           <h3>Atleta 7</h3>
           <label for="atleta7Nome">Nome:</label>
-          <input type="text" id="atleta7Nome" name="atleta7Nome" required />
+          <input type="text" id="atleta7Nome" name="atleta7Nome" readonly />
           <label for="atleta7Nome">Tempo:</label>
           <input type="text" id="tempo7" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -114,7 +98,7 @@
         <div class="atleta">
           <h3>Atleta 8</h3>
           <label for="atleta8Nome">Nome:</label>
-          <input type="text" id="atleta8Nome" name="atleta8Nome" required />
+          <input type="text" id="atleta8Nome" name="atleta8Nome" readonly />
           <label for="atleta8Nome">Tempo:</label>
           <input type="text" id="tempo8" name="tempo" pattern="^([0-5][0-9]):([0-5][0-9]):([0-9][0-9])$"
             placeholder="MM:SS:MS" required>
@@ -145,14 +129,14 @@
         </script>
       </div>
 
-      <label for="localPartida" class="localPartida">Local:</label>
-      <input type="text" id="localPartida" placeholder="Local da Partida" name="localPartida" required /><br /><br />
+      
+      <input type="text" id="localPartida" placeholder="Local da Partida" name="localPartida" required />
 
-      <label for="match_status">Status da Partida:</label>
-      <input type="text" id="match_status" name="match_status" placeholder="Status da Partida" required /><br /><br />
+    
+      <input type="text" id="match_status" name="match_status" placeholder="Status da Partida" required />
 
       <label for="judges">Juizes:</label>
-      <input type="text" id="judges" name="judges" placeholder="Juizes" required /><br /><br />
+      <input type="text" id="judges" name="judges" placeholder="Juizes" readonly /><br /><br />
 
 
       <div for="result">

@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('localPartida').value = dadosAtuais.location;
         document.getElementById('match_status').value = dadosAtuais.match_status;
         document.getElementById('judges').value = dadosAtuais.judges;
+        
 
         var nomesAtletas = dadosAtuais.athletes_involved;
 
@@ -125,6 +126,24 @@ document.addEventListener('DOMContentLoaded', async function () {
         await atualizarPartida(idPartida, dadosAtualizados);
     });
 
+    // Adicionar event listener para campos de entrada de tempo
+    for (let i = 1; i <= 8; i++) {
+        const tempoInput = document.getElementById("tempo" + i);
+        tempoInput.addEventListener('change', function () {
+            // Quando um tempo é inserido ou alterado, chama a função para preencher automaticamente 'gold', 'silver' e 'bronze'
+            preencherCamposMelhoresTempos();
+        });
+    }
+
+    // Função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
+    function preencherCamposMelhoresTempos() {
+        var tempos_atletas = coletarTempos();
+        var melhores_tempos = compararTempos(tempos_atletas);
+        document.getElementById('gold').value = melhores_tempos[0];
+        document.getElementById('silver').value = melhores_tempos[1];
+        document.getElementById('bronze').value = melhores_tempos[2];
+    }
+
     // Função para atualizar os dados da partida
     async function atualizarPartida(idPartida, dadosAtualizados) {
         try {
@@ -146,7 +165,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function compararTempos(tempos) {
         var temposOrdenados = [];
-        
+    
         // Obter os tempos de cada atleta
         for (var i = 1; i <= 8; i++) {
             var tempo = document.getElementById("tempo" + i).value;
@@ -158,13 +177,26 @@ document.addEventListener('DOMContentLoaded', async function () {
             return tempoParaSegundos(a.tempo) - tempoParaSegundos(b.tempo);
         });
         
-        // Retornar os três melhores tempos
+        // Retornar os três melhores tempos com seus números de atleta
         var melhoresTempos = [];
         for (var i = 0; i < 3; i++) {
-            melhoresTempos.push(temposOrdenados[i].tempo);
+            melhoresTempos.push({ atleta: temposOrdenados[i].atleta, tempo: temposOrdenados[i].tempo });
         }
         
         return melhoresTempos;
+    }
+    
+    // Dentro da função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
+    function preencherCamposMelhoresTempos() {
+        var tempos_atletas = coletarTempos();
+        var melhores_tempos = compararTempos(tempos_atletas);
+        
+        // Preencher os campos com os nomes dos atletas correspondentes aos melhores tempos
+        for (var i = 0; i < 3; i++) {
+            var atletaNumero = melhores_tempos[i].atleta;
+            var nomeAtleta = document.getElementById("atleta" + atletaNumero + "Nome").value;
+            document.getElementById(['gold', 'silver', 'bronze'][i]).value = nomeAtleta;
+        }
     }
     
     function tempoParaSegundos(tempo) {
