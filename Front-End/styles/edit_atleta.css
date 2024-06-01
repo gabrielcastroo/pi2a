@@ -122,6 +122,7 @@ a:hover {
 /* Estilizando as caixas de seleção e os rótulos */
 #especializacoes input[type="checkbox"] {
     display: inline-block; /* Alinha as caixas de seleção em linha */
+    margin-right: 5px;
 }
 
 #especializacoes label {
