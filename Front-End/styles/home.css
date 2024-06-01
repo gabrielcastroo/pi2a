@@ -22,6 +22,23 @@ body{
     overflow: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+    height: 1px;
+  }
+  
+::-webkit-scrollbar-thumb {
+background-color: #4d4d4d;
+border-radius: 6px;
+border: 3px solid transparent;
+background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+background-color: #0f1519;
+border-radius: 4px;
+}
+
 #content{
     display: flex;
     flex-direction: row;
@@ -125,7 +142,7 @@ body{
     margin-block: auto;
     font-family: "Poppins", sans-serif;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal;
 }
 
@@ -135,7 +152,7 @@ body{
 }
 
 .option-container {
-    height: 11rem;
+    height: 142px;
     display: flex;
     flex-direction: column;
     transition: background-color 0.5s ease;
@@ -151,7 +168,7 @@ body{
     margin-left: 4rem;
     margin-block: auto;
     font-family: "Poppins", sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     font-style: normal;
 }
@@ -192,7 +209,7 @@ body{
 
 .match-day span{
     font-family: "Poppins", sans-serif;
-    font-size: 44px;
+    font-size: 38px;
     font-weight: 400;
     font-style: normal;
     color: white
@@ -202,9 +219,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* width: 48.625rem; */
     margin-block: auto;
-    gap: 10rem;
 }
 
 .swimmer-container{
@@ -223,7 +238,8 @@ body{
 }
 
 .icon-flag{
-    width: 40px;
+    max-width: 30px;
+    margin-right: 16px;
 }
 
 .left-swimmer-side-container{
@@ -242,7 +258,7 @@ body{
 .match-type{
     margin-top: auto;
     font-family: "Poppins", sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     font-style: normal;
     color: #8FA3B0;
@@ -251,8 +267,8 @@ body{
 
 .match-type span{
     font-family: "Poppins", sans-serif;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 500;
     font-style: normal;
     color: #8FA3B0;
 }
