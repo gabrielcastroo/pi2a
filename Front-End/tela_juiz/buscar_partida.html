@@ -19,25 +19,31 @@
           <p class="form-title">Buscar Partida</p>
           <p class="form-subtitle">Insira a data da partida para a busca</p>
           <div class="input-field">
-            <p class="input-title">Data</p>
-            <input
-              class="select-field"
-              type="datetime-local"
-              id="dataPartida"
-              name="dataPartida"
-              required
-            />
+            <div class="select-field-container">
+              <p class="input-title">Data</p>
+              <input
+                class="select-field"
+                type="datetime-local"
+                id="dataPartida"
+                name="dataPartida"
+                required
+              />
+            </div>
           </div>
 
-          <button class="search-match-button" type="submit">
-            Buscar Partida
-          </button>
+          <div class="search-button-container">
+            <button class="search-match-button" type="submit">
+              Buscar Partida
+            </button>
+          </div>
         </form>
 
         <form id="buscarTodasPartidasForm">
-          <button class="search-all-matchs-button" type="submit">
-            Buscar Todas as Partidas
-          </button>
+          <div class="search-all-button-container">
+            <button class="search-all-matchs-button" type="submit">
+              Buscar Todas as Partidas
+            </button>
+          </div>
         </form>
         <div id="resultadoBusca"></div>
       </div>
