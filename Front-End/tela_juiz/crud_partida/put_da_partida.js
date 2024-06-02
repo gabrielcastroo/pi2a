@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (parts.length === 2) return parts.pop().split(';').shift();
         return null;
       }
-
     // Função para atualizar os dados da partida
     async function atualizarPartida(idPartida, dadosAtualizados) {
         const token = getCookie('access_token');
