@@ -86,11 +86,11 @@ def get_match_controller(match_type: str, db: Session = Depends(get_db)):
     matches = match_repository.MatchRepository(db=db).get_match_by_type(matchtype=match_type)
     if matches:
         for m in matches:
-            athetes = m.athletes_involved
-            athetes_list = [item.strip() for item in athetes.split(',')]
+            athletes = m.athletes_involved
+            athletes_list = [item.strip() for item in athletes.split(',')]
             res: List[schemas.AthleteDTO] = []
-            if athetes_list:
-                for at in athetes_list:
+            if athletes_list:
+                for at in athletes_list:
                     res.append(athlete_repository.AthleteRepository(db=db).get_athlete_by_name(at))
                 m.athletes_involved = res
     return matches
