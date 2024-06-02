@@ -150,11 +150,11 @@ document.addEventListener('DOMContentLoaded', async function () {
                 body: JSON.stringify(dadosAtualizados)
             });
             const data = await response.json();
-            console.log('Partida atualizada:', data);
-            alert('Partida atualizada com sucesso!');
+            console.log('Partida eftivada:', data);
+            alert('Partida efetivada com sucesso!');
             // Faça algo com a resposta, se necessário
         } catch (error) {
-            console.error('Erro ao atualizar partida:', error);
+            console.error('Erro ao efetivar partida:', error);
         }
     }
     // Dentro da função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
