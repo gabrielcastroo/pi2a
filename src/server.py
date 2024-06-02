@@ -7,6 +7,7 @@ from src.infra.orm.config.database import get_db, create_db
 from fastapi.middleware.cors import CORSMiddleware
 from src.infra.auth import hash_provider, token_provider
 from src.utils import auth_utils
+from typing import List
 
 create_db()
 
@@ -79,6 +80,20 @@ def get_matches_controller(db: Session = Depends(get_db)):
 def get_match_controller(id:int, db: Session = Depends(get_db)):
     match = match_repository.MatchRepository(db=db).get_match(id)
     return match
+
+@app.get('/match/type/{match_type}')
+def get_match_controller(match_type: str, db: Session = Depends(get_db)):
+    matches = match_repository.MatchRepository(db=db).get_match_by_type(matchtype=match_type)
+    if matches:
+        for m in matches:
+            athletes = m.athletes_involved
+            athletes_list = [item.strip() for item in athletes.split(',')]
+            res: List[schemas.AthleteDTO] = []
+            if athletes_list:
+                for at in athletes_list:
+                    res.append(athlete_repository.AthleteRepository(db=db).get_athlete_by_name(at))
+                m.athletes_involved = res
+    return matches
 
 @app.post('/match')
 def create_match_controller(match: schemas.MatchDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
