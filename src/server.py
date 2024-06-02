@@ -5,7 +5,8 @@ from src.infra.orm.config import database
 from src.schemas import schemas
 from src.infra.orm.config.database import get_db, create_db
 from fastapi.middleware.cors import CORSMiddleware
-from src.infra.auth import hash_provider
+from src.infra.auth import hash_provider, token_provider
+from src.utils import auth_utils
 
 create_db()
 
@@ -48,12 +49,12 @@ def get_athlete_controller(id:int, db: Session = Depends(get_db)):
     return athlete
 
 @app.post('/athlete')
-def create_athlete_controller(athlete: schemas.AthleteDTO, db: Session = Depends(get_db)):
+def create_athlete_controller(athlete: schemas.AthleteDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     athlete = athlete_repository.AthleteRepository(db=db).create(athlete=athlete)
     return athlete
 
 @app.delete("/athlete/{athlete_id}")
-def delete_athlete_controller(athlete_id: int, db: Session = Depends(get_db)):
+def delete_athlete_controller(athlete_id: int, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     athlete_repo = athlete_repository.AthleteRepository(db)
     athlete = athlete_repo.get_athlete(athlete_id)
     if not athlete:
@@ -62,7 +63,7 @@ def delete_athlete_controller(athlete_id: int, db: Session = Depends(get_db)):
     return {"message": "Athlete deleted successfully"}
 
 @app.put("/athlete/{athlete_id}")
-def update_athlete_controller(athlete_id: int, athlete: schemas.AthleteDTO, db: Session = Depends(get_db)):
+def update_athlete_controller(athlete_id: int, athlete: schemas.AthleteDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     athlete_repo = athlete_repository.AthleteRepository(db)
     existing_athlete = athlete_repo.get_athlete(athlete_id)
     if not existing_athlete:
@@ -80,12 +81,12 @@ def get_match_controller(id:int, db: Session = Depends(get_db)):
     return match
 
 @app.post('/match')
-def create_match_controller(match: schemas.MatchDTO, db: Session = Depends(get_db)):
+def create_match_controller(match: schemas.MatchDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     match = match_repository.MatchRepository(db=db).create(match=match)
     return match
 
 @app.delete("/match/{match_id}")
-def delete_match_controller(match_id: int, db: Session = Depends(get_db)):
+def delete_match_controller(match_id: int, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     match_repo = match_repository.MatchRepository(db)
     match = match_repo.get_match(match_id)
     if not match:
@@ -94,17 +95,17 @@ def delete_match_controller(match_id: int, db: Session = Depends(get_db)):
     return {"message": "Match deleted successfully", "match": match}
 
 @app.put("/match/{match_id}")
-def update_match_controller(match_id: int, match_dto: schemas.MatchDTO, db: Session = Depends(get_db)):
+def update_match_controller(match_id: int, match_dto: schemas.MatchDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     match_repo = match_repository.MatchRepository(db)
     match = match_repo.get_match(match_id)
     if not match:
         raise HTTPException(status_code=404, detail="Match not found")
     return match_repo.update_match(match_id, match_dto)
 
-@app.get('/judges')
-def get_judges_controller(db: Session = Depends(get_db)):
-    judges = judge_repository.JudgeRepository(db=db).get_judges()
-    return judges
+# @app.get('/judges')
+# def get_judges_controller(db: Session = Depends(get_db)):
+#     judges = judge_repository.JudgeRepository(db=db).get_judges()
+#     return judges
 
 # @app.get('/judge/{id}')
 # def get_judge_controller(id:int, db: Session = Depends(get_db)):
@@ -124,7 +125,7 @@ def create_judge_controller(judge_dto: schemas.JudgeDTO, db: Session = Depends(g
 
 
 @app.delete("/judge/{judge_id}")
-def delete_judge_controller(judge_id: int, db: Session = Depends(get_db)):
+def delete_judge_controller(judge_id: int, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     judge_repo = judge_repository.JudgeRepository(db)
     judge = judge_repo.get_judge(judge_id)
     if not judge:
@@ -133,9 +134,27 @@ def delete_judge_controller(judge_id: int, db: Session = Depends(get_db)):
     return {"message": "Judge deleted successfully", "judge_deleted": judge}
 
 @app.put("/judge/{judge_id}")
-def update_judge_controller(judge_id: int, judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db)):
+def update_judge_controller(judge_id: int, judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db), judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
     judge_repo = judge_repository.JudgeRepository(db)
     judge = judge_repo.get_judge(judge_id)
     if not judge:
         raise HTTPException(status_code=404, detail="Judge not found")
     return judge_repo.update_judge(judge_id, judge_dto)
+
+@app.post("/auth/login", status_code=200)
+def login(login_dto: schemas.LoginDTO, db: Session = Depends(get_db)):
+    pwd = login_dto.password
+    email = login_dto.email
+    judge = judge_repository.JudgeRepository(db=db).get_by_email(email=email)
+    if not judge:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='email não cadastrado')
+
+    if not hash_provider.verify_hash(pwd=pwd,hash=judge.password):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='senha incorreta')
+    
+    token = token_provider.create_access_token({'sub': judge.email})
+    return {'judge': judge, 'access_token': token}
+
+@app.post("/auth/me", response_model=schemas.JudgePublicDTO)
+def me(judge_auth: schemas.JudgeDTO = Depends(auth_utils.get_judge_logged)):
+    return judge_auth
