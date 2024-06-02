@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (parts.length === 2) return parts.pop().split(';').shift();
         return null;
       }
-
     async function atualizarAtleta(idAtleta, dadosAtualizados) {
         const token = getCookie('access_token');
         try {
