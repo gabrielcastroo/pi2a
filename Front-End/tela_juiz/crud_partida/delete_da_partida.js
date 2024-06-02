@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
       }
       
-      
       // pegar o token jwt que foi salvo nos cookies
       
       async function excluirAtleta(match_id) {

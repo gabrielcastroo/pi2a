@@ -38,12 +38,20 @@ document.addEventListener('DOMContentLoaded', function () {
       result: result
     }
 
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+    const token = getCookie('access_token');
     // Envia os dados para a API
     fetch('http://ec2-44-201-200-110.compute-1.amazonaws.com/match', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+       headers:{
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                  },
       body: JSON.stringify(partidaData)
     })
       .then(response => {
