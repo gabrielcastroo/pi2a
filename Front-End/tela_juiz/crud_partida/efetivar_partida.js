@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const datetime = document.getElementById('dataHoraPartida').value.trim();
         const match_type = document.getElementById('match_type').value.trim();
         const distance = parseFloat(document.getElementById('distanciaProva').value.trim());
-        const match_status = document.getElementById('match_status').value.trim();
+        const match_status = "Partida finalizada";
         const judges = document.getElementById('judges').value.trim();
         const location = document.getElementById('localPartida').value.trim();
-        const result = ""; // Aqui você pode deixar em branco, pois será preenchido pelos melhores tempos
+
         let atletas = '';
         for (let i = 1; i <= 8; i++) {
             const atletaNome = document.getElementById('atleta' + i + 'Nome').value;
@@ -100,9 +100,20 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         // Remove a vírgula extra no final
         atletas = atletas.slice(0, -2);
-
-
+    
+        var tempos_atletas = coletarTempos();
+        var melhores_tempos = compararTempos(tempos_atletas);
+        
+        var nomesMelhoresAtletas = [];
+        for (var i = 0; i < 3; i++) {
+            var atletaNumero = melhores_tempos[i].atleta;
+            var nomeAtleta = document.getElementById("atleta" + atletaNumero + "Nome").value;
+            nomesMelhoresAtletas.push(nomeAtleta);
+        }
+        var nomesConcatenados = nomesMelhoresAtletas.join(", ");
+        
         // Montar objeto com os dados atualizados da Partida
+
         const dadosAtualizados = {
             datetime: datetime,
             match_type: match_type,
@@ -111,21 +122,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             judges: judges,
             location: location,
             athletes_involved: atletas,
-            result: result,
+            result: nomesConcatenados,
         };
-        
-        var tempos_atletas = coletarTempos();
-        var melhores_tempos = compararTempos(tempos_atletas);
-        
-        // Preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
-        document.getElementById('gold').value = melhores_tempos[0];
-        document.getElementById('silver').value = melhores_tempos[1];
-        document.getElementById('bronze').value = melhores_tempos[2];
-        
         // Chamar a função para atualizar a Partida
+        
         await atualizarPartida(idPartida, dadosAtualizados);
     });
-
+    
     // Adicionar event listener para campos de entrada de tempo
     for (let i = 1; i <= 8; i++) {
         const tempoInput = document.getElementById("tempo" + i);
@@ -135,14 +138,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
-    function preencherCamposMelhoresTempos() {
-        var tempos_atletas = coletarTempos();
-        var melhores_tempos = compararTempos(tempos_atletas);
-        document.getElementById('gold').value = melhores_tempos[0];
-        document.getElementById('silver').value = melhores_tempos[1];
-        document.getElementById('bronze').value = melhores_tempos[2];
-    }
 
     // Função para atualizar os dados da partida
     async function atualizarPartida(idPartida, dadosAtualizados) {
@@ -162,8 +157,20 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.error('Erro ao atualizar partida:', error);
         }
     }
+    // Dentro da função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
+    function preencherCamposMelhoresTempos() {
+        var tempos_atletas = coletarTempos();
+        var melhores_tempos = compararTempos(tempos_atletas);
+        
+        // Preencher os campos com os nomes dos atletas correspondentes aos melhores tempos
+        for (var i = 0; i < 3; i++) {
+            var atletaNumero = melhores_tempos[i].atleta;
+            var nomeAtleta = document.getElementById("atleta" + atletaNumero + "Nome").value;
+            document.getElementById(['gold', 'silver', 'bronze'][i]).value = nomeAtleta;
+        }
+    }
 
-    function compararTempos(tempos) {
+     function compararTempos(tempos) {
         var temposOrdenados = [];
     
         // Obter os tempos de cada atleta
@@ -186,20 +193,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         return melhoresTempos;
     }
     
-    // Dentro da função para preencher os campos 'gold', 'silver' e 'bronze' com os melhores tempos
-    function preencherCamposMelhoresTempos() {
-        var tempos_atletas = coletarTempos();
-        var melhores_tempos = compararTempos(tempos_atletas);
-        
-        // Preencher os campos com os nomes dos atletas correspondentes aos melhores tempos
-        for (var i = 0; i < 3; i++) {
-            var atletaNumero = melhores_tempos[i].atleta;
-            var nomeAtleta = document.getElementById("atleta" + atletaNumero + "Nome").value;
-            document.getElementById(['gold', 'silver', 'bronze'][i]).value = nomeAtleta;
-        }
-    }
     
-    function tempoParaSegundos(tempo) {
+     function tempoParaSegundos(tempo) {
         var partes = tempo.split(":");
         var minutos = parseInt(partes[0]);
         var segundos = parseInt(partes[1]);
@@ -207,7 +202,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         return minutos * 60 + segundos + milissegundos / 100;
     }
 
-    function coletarTempos(tempos) {
+     function coletarTempos(tempos) {
         var temposColetados = [];
     
         // Iterar sobre os campos de entrada de tempo
@@ -216,9 +211,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             var tempo = tempoInput.value;
             temposColetados.push(tempo);
         }
-    
-        // Agora a matriz 'tempos' contém os tempos de todos os atletas
-        console.log(temposColetados);
         return temposColetados;
     }
 });
