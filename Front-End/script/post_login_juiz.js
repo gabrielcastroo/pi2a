@@ -11,12 +11,15 @@ function login(email, password) {
   })
   .then(response => response.json())
   .then(data => {
+    console.log(data);
     if (data.access_token) {
       // Armazenar o token JWT nos cookies
       document.cookie = `access_token=${data.access_token}; path=/`;
-
+      alert("Login bem sucedido");
       console.log('Login successful and token stored in cookies');
+      window.location.href = "home.html";
     } else {
+      alert(data.detail);
       console.error('Login failed');
     }
   })
@@ -37,7 +40,6 @@ function handleLoginFormSubmit(event) {
     //   console.log(data);
     //   console.log('Login bem-sucedido!');
     //   console.log(`Token armazenado nos cookies: ${document.cookie}`);
-    //   //window.location.href = "home.html";
     // });
     console.log(token);
 }
