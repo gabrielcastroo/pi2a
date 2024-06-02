@@ -111,7 +111,7 @@ def get_judges_controller(db: Session = Depends(get_db)):
 #     judge = judge_repository.JudgeRepository(db=db).get_judge(id)
 #     return judge
 
-@app.post('/judge')
+@app.post('/judge', response_model=schemas.JudgePublicDTO, status_code=status.HTTP_201_CREATED)
 def create_judge_controller(judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db)):
     exists_judge = judge_repository.JudgeRepository(db=db).get_by_email(email=judge_dto.email)
     if exists_judge:
