@@ -1,10 +1,11 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from src.infra.orm.repository import athlete_repository,match_repository,judge_repository
 from src.infra.orm.config import database
 from src.schemas import schemas
 from src.infra.orm.config.database import get_db, create_db
 from fastapi.middleware.cors import CORSMiddleware
+from src.infra.auth import hash_provider
 
 create_db()
 
@@ -105,15 +106,22 @@ def get_judges_controller(db: Session = Depends(get_db)):
     judges = judge_repository.JudgeRepository(db=db).get_judges()
     return judges
 
-@app.get('/judge/{id}')
-def get_judge_controller(id:int, db: Session = Depends(get_db)):
-    judge = judge_repository.JudgeRepository(db=db).get_judge(id)
-    return judge
+# @app.get('/judge/{id}')
+# def get_judge_controller(id:int, db: Session = Depends(get_db)):
+#     judge = judge_repository.JudgeRepository(db=db).get_judge(id)
+#     return judge
 
 @app.post('/judge')
 def create_judge_controller(judge_dto: schemas.JudgeDTO, db: Session = Depends(get_db)):
+    exists_judge = judge_repository.JudgeRepository(db=db).get_by_email(email=judge_dto.email)
+    if exists_judge:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='email já cadastrado')
+
+    judge_dto.password = hash_provider.get_hash(judge_dto.password)
+
     judge = judge_repository.JudgeRepository(db=db).create(judge=judge_dto)
     return judge
+
 
 @app.delete("/judge/{judge_id}")
 def delete_judge_controller(judge_id: int, db: Session = Depends(get_db)):
