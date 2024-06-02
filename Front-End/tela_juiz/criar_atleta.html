@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/criar_atleta.css" />
-    <!-- Link para o arquivo de estilo -->
-    <title>Criando Atleta</title>
+    <title>Cadastro de Atleta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,103 +12,187 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <div id="header">
-      <h1>Criando Atleta</h1>
-    </div>
+    <div class="container">
+      <div class="form-container">
+        <p class="form-title">CADASTRO DE ATLETA</p>
+        <p class="form-subtitle">Insira as informações do atleta</p>
+        <form id="atletaForm">
+          <div class="side-form">
+            <div class="side-left">
+              <div class="input-field">
+                <p class="input-title">Nome</p>
+                <input
+                  type="text"
+                  id="nomeAtleta"
+                  name="nomeAtleta"
+                  placeholder="Insira o nome"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Data de Nascimento</p>
+                <input
+                  type="datetime-local"
+                  id="idadeAtleta"
+                  name="idadeAtleta"
+                  placeholder="Insira a data de nascimento"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">País</p>
+                <input
+                  type="text"
+                  id="paisAtleta"
+                  name="paisAtleta"
+                  placeholder="País do Atleta"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Altura(cm)</p>
+                <input
+                  type="text"
+                  id="alturaAtleta"
+                  name="alturaAtleta"
+                  placeholder="Altura do Atleta"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Peso(Kg)</p>
+                <input
+                  type="text"
+                  id="pesoAtleta"
+                  name="pesoAtleta"
+                  placeholder="Peso do Atleta"
+                  required
+                />
+              </div>
+            </div>
+            <div class="side-right">
+              <div class="input-field">
+                <p class="input-title">Histórico de Medalhas</p>
+                <input
+                  type="text"
+                  id="medalHistory"
+                  name="medalHistory"
+                  placeholder="'Ouro 2018, Prata 2020, Ouro 2022'"
+                  required
+                />
+              </div>
 
-    <div id="content">
-      <h2>Novo Atleta</h2>
-      <form id="atletaForm">
-        <label for="nomeAtleta">Nome:</label>
-        <input
-          type="text"
-          id="nomeAtleta"
-          name="nomeAtleta"
-          placeholder="nome"
-          required
-        /><br /><br />
-        <label for="idadeAtleta">Data de Nascimento:</label>
-        <input
-          type="datetime-local"
-          id="idadeAtleta"
-          name="idadeAtleta"
-          placeholder="idade"
-          required
-        /><br /><br />
-        <label for="paisAtleta">País:</label>
-        <input
-          type="text"
-          id="paisAtleta"
-          name="paisAtleta"
-          placeholder="país"
-          required
-        /><br /><br />
-        <label for="alturaAtleta">Altura (cm):</label>
-        <input
-          type="text"
-          id="alturaAtleta"
-          name="alturaAtleta"
-          placeholder="altura"
-          required
-        /><br /><br />
-        <label for="pesoAtleta">Peso (kg):</label>
-        <input
-          type="text"
-          id="pesoAtleta"
-          name="pesoAtleta"
-          placeholder="peso"
-          required
-        /><br /><br />
-        <label for="pesoAtleta">Histórico de Medalha:</label>
-        <input
-          type="text"
-          id="medalHistory"
-          name="medalHistory"
-          placeholder="histórico de medalhas"
-          required
-        /><br /><br />
+              <div class="input-field">
+                <p class="input-title">Melhores Tempos</p>
+                <input
+                  type="text"
+                  id="bestTimes"
+                  name="bestTimes"
+                  placeholder="Melhores tempos em prova"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Equipe</p>
+                <input
+                  type="text"
+                  id="equipeAtleta"
+                  name="equipeAtleta"
+                  placeholder="Equipe na prova"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Modalidade</p>
+                <input
+                  type="text"
+                  id="esporteAtleta"
+                  name="esporteAtleta"
+                  placeholder="'Natação'"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <p class="input-title">Especializações</p>
+                <div id="especializacoes">
+                  <div class="inline-checkbox">
+                    <div class="above-checkbox">
+                      <label class="custom-checkbox" for="peito">
+                        <input
+                          type="checkbox"
+                          id="peito"
+                          name="especializacoes"
+                          value="Peito"
+                        />
+                        <span class="checkmark"></span>
+                        Peito
+                      </label>
 
-        <label for="specializations">Especializações:</label>
-        <input
-          type="text"
-          id="specializations"
-          name="specializations"
-          placeholder="Especializações"
-          required
-        /><br /><br />
+                      <label class="custom-checkbox" for="costas">
+                        <input
+                          type="checkbox"
+                          id="costas"
+                          name="especializacoes"
+                          value="Costas"
+                        />
+                        <span class="checkmark"></span>
+                        Costas
+                      </label>
 
-        <label for="pesoAtleta">Melhores tempos:</label>
-        <input
-          type="text"
-          id="bestTimes"
-          name="bestTimes"
-          placeholder="melhores tempos"
-          required
-        /><br /><br />
-        <label for="equipeAtleta">Equipe:</label>
-        <input
-          type="text"
-          id="equipeAtleta"
-          name="equipeAtleta"
-          placeholder="equipe"
-          required
-        /><br /><br />
-        <label for="esporteAtleta">Modalidade:</label>
-        <input
-          type="text"
-          id="esporteAtleta"
-          name="esporteAtleta"
-          placeholder="esporte"
-          required
-        /><br /><br />
-        <button type="submit">Criar Atleta</button>
-      </form>
-    </div>
+                      <label class="custom-checkbox" for="borboleta">
+                        <input
+                          type="checkbox"
+                          id="borboleta"
+                          name="especializacoes"
+                          value="Borboleta"
+                        />
+                        <span class="checkmark"></span>
+                        Borboleta
+                      </label>
+                    </div>
+                    <div class="below-checkbox">
+                      <label class="custom-checkbox" for="livre">
+                        <input
+                          type="checkbox"
+                          id="livre"
+                          name="especializacoes"
+                          value="Livre"
+                        />
+                        <span class="checkmark"></span>
+                        Livre
+                      </label>
 
-    <div id="footer">
-      <a href="home.html">Voltar para Home</a>
-      <a href="criar_partida.html">Criar Partida</a>
+                      <label class="custom-checkbox" for="medley">
+                        <input
+                          type="checkbox"
+                          id="medley"
+                          name="especializacoes"
+                          value="Medley"
+                        />
+                        <span class="checkmark"></span>
+                        Medley
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="side-buttons">
+            <a class="back-button-title" href="home.html">
+              <button type="button" class="back-button">Voltar</button></a
+            >
+            <button type="submit" class="submit-button">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+      <img
+        class="side-image"
+        src="../assets/images/Swimmer Cadastration.png"
+        alt=""
+      />
     </div>
 
     <script src="crud_atleta/post_do_atleta.js"></script>

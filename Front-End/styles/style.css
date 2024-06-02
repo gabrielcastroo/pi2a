@@ -235,27 +235,20 @@ body{
 }
 
 ::-webkit-scrollbar {
-  width: 12px; /* Largura da barra de rolagem */
-  height: 12px; /* Altura da barra de rolagem horizontal */
+  width: 12px;
+  height: 1px;
 }
 
-/* Estilo do "thumb" da barra de rolagem (a parte que você pode arrastar) */
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(182, 39, 39); /* Cor do thumb */
-  border-radius: 6px; /* Bordas arredondadas */
-  border: 3px solid transparent; /* Espaço ao redor do thumb */
-  background-clip: content-box; /* Faz com que a cor do background não cubra o espaço */
+  background-color: #4d4d4d;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 
-/* Estilo do "track" da barra de rolagem (a trilha por onde o thumb se move) */
 ::-webkit-scrollbar-track {
-  background-color: #f0f0f0; /* Cor do track */
-  border-radius: 6px; /* Bordas arredondadas */
-}
-
-/* Estilo do "corner" da barra de rolagem (o canto onde as barras de rolagem horizontal e vertical se encontram) */
-::-webkit-scrollbar-corner {
-  background-color: #f0f0f0; /* Cor do canto */
+  background-color: #0f1519;
+  border-radius: 4px;
 }
 
 main{
