@@ -96,19 +96,19 @@ img {
 }
 
 .menu-color1{
-  background-color: #858AE3;
+  background-color: #78660B;
 }
 
 .menu-color2{
-  background-color: #7A5C61;
+  background-color: #6D7A0F;
 }
 
 .menu-color3{
-  background-color: #97DFFC;
+  background-color: #FFA890;
 }
 
 .menu-color4{
-  background-color: #D5C6E0;
+  background-color: #543522;
 }
 
 .hero-header .header-item-container{
@@ -127,8 +127,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #051325;
-  color: white;
+  background-color: #ffffff;
+  color: #051325;
   opacity: 1;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -149,8 +149,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #051325;
-  color: white;
+  background-color: #ffffff;
+  color: #051325;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -170,8 +170,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 92.8px;
-  background-color: #051325;
-  color: white;
+  background-color: #ffffff;
+  color: #051325;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -191,8 +191,8 @@ img {
   height: 42px;
   text-align: center;
   border-radius: 100px;
-  background-color: #051325;
-  color: white;
+  background-color: #ffffff;
+  color: #051325;
   transition: all 0.3s ease;
 }
 
