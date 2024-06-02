@@ -36,13 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
         await criarAtleta(novoAtleta);
     });
 
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
     async function criarAtleta(novoAtleta) {
+        const token = getCookie('access_token');
         try {
             const response = await fetch('http://ec2-44-201-200-110.compute-1.amazonaws.com/athlete', {
                 method: 'POST',
-                headers: {
+                headers:{
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                },
+                  },
                 body: JSON.stringify(novoAtleta)
             });
             const data = await response.json();

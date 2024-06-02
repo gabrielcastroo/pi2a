@@ -89,13 +89,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         await atualizarAtleta(idAtleta, dadosAtualizados);
     });
 
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
     async function atualizarAtleta(idAtleta, dadosAtualizados) {
+        const token = getCookie('access_token');
         try {
             const response = await fetch(`http://ec2-44-201-200-110.compute-1.amazonaws.com/athlete/${idAtleta}`, {
                 method: 'PUT',
-                headers: {
+                headers:{
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                },
+                  },
                 body: JSON.stringify(dadosAtualizados)
             });
             const data = await response.json();

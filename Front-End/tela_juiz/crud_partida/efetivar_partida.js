@@ -138,15 +138,25 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null;
+      }
+
 
     // Função para atualizar os dados da partida
     async function atualizarPartida(idPartida, dadosAtualizados) {
+        const token = getCookie('access_token');
+
         try {
             const response = await fetch(`http://ec2-44-201-200-110.compute-1.amazonaws.com/match/${idPartida}`, {
                 method: 'PUT', // Método PUT para atualizar
-                headers: {
+                headers:{
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                },
+                  },
                 body: JSON.stringify(dadosAtualizados)
             });
             const data = await response.json();
