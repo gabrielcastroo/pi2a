@@ -140,33 +140,25 @@ img {
   margin-top: 16px;
 }
 
-.back-button-container {
-  width: 100%;
+.back-to-landin{
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.back-button {
-  width: 100%;
-  height: 2.5rem;
-  border-radius: 12px;
-  background-color: #6030d1;
-  border: none;
-  text-align: center;
-  cursor: pointer;
-  color: white;
-  font-family: 'Poppins', sans-serif;
+.register {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
-  margin-top: 16px;
+  width: 100%;
+  margin-inline: auto;
 }
 
-.back-button-title {
-  width: 60%;
-  color: white;
-  text-decoration: none;
+.back-link {
+  color: #8b39dd;
+  transition: color 0.3s;
 }
 
 /*====  RESULT ====================== */

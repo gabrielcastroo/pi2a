@@ -147,6 +147,11 @@ img {
   margin-top: 16px;
 }
 
+.back-to-landin{
+  display: flex;
+  align-items: center;
+}
+
 .register {
   margin-top: 1rem;
   font-family: "Poppins", sans-serif;
@@ -161,7 +166,6 @@ img {
 .back-link {
   color: #8b39dd;
   transition: color 0.3s;
-
 }
 
 /*====  RESULT ====================== */

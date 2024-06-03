@@ -23,7 +23,7 @@
               <div>
                 <p class="input-title">Data e Hora</p>
                 <input
-                  class="select-field"
+                  class="select-info-field"
                   type="datetime-local"
                   id="dataHoraPartida"
                   name="dataHoraPartida"
@@ -33,7 +33,7 @@
               <div>
                 <p class="input-title">Modalidade de Nado</p>
                 <select
-                  class="select-field"
+                  class="select-info-field"
                   id="match_type"
                   name="match_type"
                   required
@@ -48,7 +48,7 @@
               </div>
               <div>
                 <p class="input-title">Distância da Prova(m)</p>
-                <select class="select-field" id="distanciaProva" name="distanciaProva" required>
+                <select class="select-info-field" id="distanciaProva" name="distanciaProva" required>
                   <option value="0">Selecione</option>
                   <option value="50">50m</option>
                   <option value="100">100m</option>
@@ -141,9 +141,12 @@
             </div>
           </div>
           <div class="side-buttons">
-            <a class="back-button-title" href="home.html">
-              <button type="button" class="back-button">Voltar</button></a
-            >
+            <div class="back-to-landin">
+              <p class="register">
+                <a class="back-link" href="../tela_juiz/home.html">Voltar</a>
+                para o calendário
+              </p>
+            </div>
             <button class="submit-button" type="submit">Cadastrar Partida</button>
           </div>
         </form>
