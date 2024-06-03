@@ -61,7 +61,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Obter valores dos campos do formulário
         const idAtleta = idAtletaInput.value.trim();
         const nomeAtleta = document.getElementById('nomeAtleta').value;
-        const idadeAtleta = document.getElementById('idadeAtleta').value;
+        const idadeAtletaInput = document.getElementById('idadeAtleta'); // Input de data de nascimento
+        // Obter apenas a data da string e adicionar 'T00:00' para formatar como date-time
+        const idadeAtleta = idadeAtletaInput.value.split('T')[0] + 'T00:00';
         const alturaAtleta = parseFloat(document.getElementById('alturaAtleta').value);
         const pesoAtleta = parseFloat(document.getElementById('pesoAtleta').value);
         const bestTimes = document.getElementById('bestTimes').value;
