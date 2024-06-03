@@ -85,7 +85,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Obter valores dos campos do formulário
         const datetime = document.getElementById('dataHoraPartida').value.trim();
-        const match_type = document.getElementById('match_type').value.trim();
+        const match_type_input = document.getElementById('match_type');
+        const match_type_ = match_type_input.value.trim();
+        const match_type = match_type_.charAt(0).toUpperCase() + match_type_.slice(1).toLowerCase();
+
         const distance = parseFloat(document.getElementById('distanciaProva').value.trim());
         const match_status = document.getElementById('match_status').value.trim();
         const judges = document.getElementById('judges').value.trim();
@@ -93,7 +96,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const result = "";
         let atletas = '';
         for (let i = 1; i <= 8; i++) {
-            const atletaNome = document.getElementById('atleta' + i + 'Nome').value;
+            const atletaNome = document.getElementById('atleta' + i + 'Nome').value.trim();
             if (atletaNome.trim() !== '') {
                 atletas += atletaNome + ', ';
             }
@@ -101,6 +104,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Remove a vírgula extra no final
         atletas = atletas.slice(0, -2);
 
+        // Verificar se todos os nomes de atletas estão na lista da API
+        const nomesAtletasAPI = await obterNomesAtletasAPI(); // Função para obter os nomes de atletas da API
+        const nomesAtletasFormulario = atletas.split(', ');
+        const todosNomesValidos = nomesAtletasFormulario.every(nome => nomesAtletasAPI.includes(nome));
+
+        if (!todosNomesValidos) {
+            alert('Um ou mais nomes de atletas inseridos não são válidos. Por favor, verifique os nomes.');
+            return; // Impede o envio do formulário se houver nomes inválidos
+        }
 
         // Montar objeto com os dados atualizados da Partida
         const dadosAtualizados = {
@@ -118,13 +130,56 @@ document.addEventListener('DOMContentLoaded', async function () {
         await atualizarPartida(idPartida, dadosAtualizados);
     });
 
+    // Função para obter os nomes de atletas da API
+    async function obterNomesAtletasAPI() {
+        try {
+            const response = await fetch('http://ec2-44-201-200-110.compute-1.amazonaws.com/athletes');
+            if (!response.ok) {
+                throw new Error('Erro ao obter atletas da API');
+            }
+            const data = await response.json();
+            const nomesAtletas = data.map(athlete => athlete.name);
+            return nomesAtletas;
+        } catch (error) {
+            console.error('Erro ao obter nomes de atletas da API:', error);
+            return []; // Retorna uma lista vazia em caso de erro
+        }
+    }
+
+    // Função para verificar se os nomes dos atletas estão na API
+    async function verificarNomesNaAPI(nomes) {
+        const token = getCookie('access_token');
+        try {
+            for (const nome of nomes) {
+                const response = await fetch(`http://ec2-44-201-200-110.compute-1.amazonaws.com/athletes?name=${nome}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`Erro ao verificar o atleta "${nome}" na API`);
+                }
+                const data = await response.json();
+                if (data.length === 0) {
+                    return false; // Nome não encontrado na API
+                }
+            }
+            return true; // Todos os nomes encontrados na API
+        } catch (error) {
+            console.error('Erro ao verificar nomes na API:', error.message);
+            return false;
+        }
+    }
+
     function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
         return null;
-      }
-    // Função para atualizar os dados da partida
+    }
+
+    // Função para atualizar os dados
     async function atualizarPartida(idPartida, dadosAtualizados) {
         const token = getCookie('access_token');
         try {
@@ -133,7 +188,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 headers:{
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                  },
+                },
                 body: JSON.stringify(dadosAtualizados)
             });
             const data = await response.json();
@@ -145,3 +200,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 });
+
