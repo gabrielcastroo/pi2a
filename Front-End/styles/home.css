@@ -78,6 +78,15 @@ border-radius: 4px;
     cursor: pointer;
 }
 
+#background-name {
+    margin-block: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.8rem;
+    cursor: pointer;
+}
+
 .menu-icon {
     width: 24px;
 }
@@ -411,17 +420,29 @@ border-radius: 4px;
 }
 
 @media(max-height: 850px){
+/*====  Header / Content ================= */
+#header {
+    height: 80px;
+    display: flex;
+    background-color: #0A0E13;
+    overflow: hidden;
+}
 
-    /*====  FILTER ============================ */
+#content{
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
 
-
+/*====  FILTER ============== */
 .filter-title {
     margin-left: 2rem;
     color: #8FA3B0;
     margin-block: auto;
     font-family: "Poppins", sans-serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -431,7 +452,7 @@ border-radius: 4px;
 }
 
 .option-container {
-    height: 120px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     transition: background-color 0.5s ease;
@@ -448,7 +469,7 @@ border-radius: 4px;
     margin-block: auto;
     font-family: "Poppins", sans-serif;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -457,5 +478,51 @@ border-radius: 4px;
     width: 250px;
     background-color: #727272;
     margin-inline: auto;
+}
+
+/*====  SIDE MENU ============== */
+
+.side-menu-options-container{
+    width: 420px;
+    height: auto;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.side-menu{
+    background: #000000;
+    width:  600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.side-menu-title{
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    color: white;
+}
+
+.side-menu-option{
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    cursor: pointer;
+    height: 36px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.side-menu-option:hover{
+    background-color: #7CA5BF;
+    border-radius: 5px;
 }
 }
