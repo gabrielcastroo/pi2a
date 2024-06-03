@@ -143,6 +143,11 @@ img {
     font-style: normal;
 }
 
+.back-link {
+    color: #8b39dd;
+    transition: color 0.3s;
+}
+
 .register-link {
     color: #8b39dd;
     transition: color 0.3s;
