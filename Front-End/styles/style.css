@@ -96,15 +96,15 @@ img {
 }
 
 .menu-color1{
-  background-color: #78660B;
+  background-color: #584d16;
 }
 
 .menu-color2{
-  background-color: #6D7A0F;
+  background-color: #606826;
 }
 
 .menu-color3{
-  background-color: #FFA890;
+  background-color: #b14122;
 }
 
 .menu-color4{
@@ -252,10 +252,10 @@ body{
 }
 
 main{
-  height: 3500px;
+  height: auto;
   background-color: #051325;
   padding-left: 14rem;
-  max-width: calc(224px + 770px);
+  max-width: 1000px;
 }
 
 main .logo{
@@ -304,11 +304,11 @@ main .logo{
 }
 
 
-
 /*=============== FOOTER ==================*/
 
 .names-container{
   margin-block: auto;
+  margin-right: 64px;
   display: flex;
   flex-direction: column;
   gap:  1.25rem;
@@ -320,6 +320,7 @@ main .logo{
   padding-left: 960px;
   color: #051325;
 }
+
 
 .social-icons-container{
   height: 20rem;
@@ -370,4 +371,21 @@ main .logo{
   display: flex;
   background-color: #E1CA96;
   height: 20rem;
+}
+
+@media(max-width: 1500px){
+  .names-container{
+    margin-block: auto;
+    margin-right: 64px;
+    padding-left: 14rem;
+    display: flex;
+    flex-direction: column;
+    gap:  1.25rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    color: #051325;
+  }
 }
