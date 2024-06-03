@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
       
       athleteSelects.forEach(select => {
         select.innerHTML = '';
-        // const defaultOption = document.createElement('option');
-        // defaultOption.text = 'Selecione';
-        // defaultOption.value = '';
-        // select.appendChild(defaultOption);
+        const defaultOption = document.createElement('option');
+        defaultOption.text = 'Selecione';
+        defaultOption.value = '';
+        select.appendChild(defaultOption);
 
         data.forEach(athlete => {
           const option = document.createElement('option');
@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const dataHoraPartida = document.getElementById('dataHoraPartida').value;
     const match_type = document.getElementById('match_type').value;
     const distanciaProva = parseInt(document.getElementById('distanciaProva').value);
-    const localPartida = document.getElementById('localPartida').value;
+    const localPartida = document.getElementById('localPartida').value.trim();
     const match_status = 'Partida agendada';
-    const judges = document.getElementById('judges').value;
+    const judges = document.getElementById('judges').value.trim();
     const result = '';
 
     let atletasArray = [];
