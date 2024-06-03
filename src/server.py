@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.infra.auth import hash_provider, token_provider
 from src.utils import auth_utils
 from typing import List
+from fastapi.responses import RedirectResponse
 
 create_db()
 
@@ -36,8 +37,8 @@ def is_running():
     return {"running": True}
 
 @app.get('/')
-def homepage():
-    return {"homepage": "this is a homepage"}
+def redirect_ui():
+    return RedirectResponse(url="/ui/")
 
 @app.get('/athletes')
 def get_athletes_controller(db: Session = Depends(get_db)):
