@@ -30,6 +30,7 @@ function exibirResultados(partidas) {
 
     if (partidas.length === 0) {
       matchFilter.textContent = 'Nenhuma partida encontrada.'
+      matchFilter.classList.add('no-matches-found');
       return
     }
 
