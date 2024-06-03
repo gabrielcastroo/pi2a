@@ -273,3 +273,13 @@ img {
   color: #8b39dd;
   transition: color 0.3s;
 }
+
+@media(max-height: 800px){
+  .form-container {
+    padding: 1rem 2rem;
+    margin: auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+}
