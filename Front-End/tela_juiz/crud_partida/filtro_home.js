@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Adiciona eventos de clique para cada botão de filtro
-    document.querySelectorAll('.option-title').forEach(button => {
+    document.querySelectorAll('.option-container').forEach(button => {
       button.addEventListener('click', async function(event) {
         const tipoPartida = event.target.textContent.trim();
         await buscarPartidasPorTipo(tipoPartida);
