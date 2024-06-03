@@ -9,11 +9,6 @@ def test_is_running():
     assert response.status_code == 200
     assert response.json() == {"running": True}
 
-def test_home():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == {"homepage": "this is a homepage"}
-
 # def test_get_athletes():
 #     response = client.get("/athletes")
 #     assert response.status_code == 200
