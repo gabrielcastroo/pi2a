@@ -35,10 +35,6 @@ app.add_middleware(
 def is_running():
     return {"running": True}
 
-@app.get('/')
-def homepage():
-    return {"homepage": "this is a homepage"}
-
 @app.get('/athletes')
 def get_athletes_controller(db: Session = Depends(get_db)):
     athletes = athlete_repository.AthleteRepository(db=db).get_athletes()
