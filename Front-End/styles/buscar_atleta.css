@@ -232,3 +232,155 @@ img {
 .icons-container img {
   width: 24px;
 }
+
+.register {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  width: 60%;
+  margin-inline: auto;
+}
+
+.back-link {
+  color: #8b39dd;
+  transition: color 0.3s;
+
+}
+
+@media(max-height: 800px){
+
+  /*====  CONTAINER ============= */
+  .form-container {
+    padding: 2rem 3rem;
+    margin: auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*====  FORM ========== */
+
+  .select-field-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .select-field-container p {
+    display: flex;
+    align-items: start;
+  }
+  
+  .select-field {
+    width: 60%;
+    height: 2.2rem;
+    border-radius: 12px;
+    border: 1px solid #c4c4c4;
+    padding-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .search-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-match-button {
+    width: 60%;
+    height: 2.2rem;
+    border-radius: 12px;
+    background-color: #6030d1;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    margin-top: 16px;
+  }
+  
+  .search-all-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-all-matchs-button {
+    width: 60%;
+    height: 2.2rem;
+    border-radius: 12px;
+    background-color: #6030d1;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    margin-top: 16px;
+  }
+  
+  /*====  RESULT ================= */
+
+#resultadoBusca {
+  margin-top: 16px;
+}
+
+.lista-atletas {
+  height: 240px;
+  overflow: auto;
+}
+
+.partida {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 16px;
+  height: 220px;
+  padding-inline: 16px;
+  overflow: auto;
+}
+
+.elements-match{
+  font-family: 'Poppins', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 10px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.paragraph-title {
+  font-family: 'Poppins', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.paragraph {
+  font-family: 'Poppins', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 4px;
+}
+}
