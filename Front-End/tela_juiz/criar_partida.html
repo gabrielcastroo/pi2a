@@ -23,7 +23,7 @@
               <div>
                 <p class="input-title">Data e Hora</p>
                 <input
-                  class="select-field"
+                  class="select-info-field"
                   type="datetime-local"
                   id="dataHoraPartida"
                   name="dataHoraPartida"
@@ -33,7 +33,7 @@
               <div>
                 <p class="input-title">Modalidade de Nado</p>
                 <select
-                  class="select-field"
+                  class="select-info-field"
                   id="match_type"
                   name="match_type"
                   required
@@ -48,7 +48,7 @@
               </div>
               <div>
                 <p class="input-title">Distância da Prova(m)</p>
-                <select class="select-field" id="distanciaProva" name="distanciaProva" required>
+                <select class="select-info-field" id="distanciaProva" name="distanciaProva" required>
                   <option value="0">Selecione</option>
                   <option value="50">50m</option>
                   <option value="100">100m</option>
@@ -64,55 +64,55 @@
                 <div class="atleta">
                   <div>
                     <p class="input-title">Atleta 1</p>
-                    <input class="input-field" type="text" id="atleta1Nome" name="atleta1Nome" placeholder="Nome" required/>
+                    <select class="select-field" id="atleta1Nome" name="atleta1Nome" required></select>
                   </div>
                 </div>
                 <div class="atleta">
                   <div>
-                    <p class="input-title" >Atleta 2</p>
-                    <input class="input-field" type="text" id="atleta2Nome" name="atleta2Nome" placeholder="Nome" required/>
-                  </div>
-                </div>
-              </div>
-              <div class="athlete-layer">
-                <div class="atleta">
-                  <div>
-                    <p class="input-title" >Atleta 3</p>
-                    <input class="input-field" type="text" id="atleta3Nome" name="atleta3Nome" placeholder="Nome" required/>
-                  </div>
-                </div>
-                <div class="atleta">
-                  <div>
-                    <p class="input-title" >Atleta 4</p>
-                    <input class="input-field" type="text" id="atleta4Nome" name="atleta4Nome" placeholder="Nome" required/>
+                    <p class="input-title">Atleta 2</p>
+                    <select class="select-field" id="atleta2Nome" name="atleta2Nome" required></select>
                   </div>
                 </div>
               </div>
               <div class="athlete-layer">
                 <div class="atleta">
                   <div>
-                    <p class="input-title" >Atleta 5</p>
-                    <input class="input-field" type="text" id="atleta5Nome" name="atleta5Nome" placeholder="Nome" required/>
+                    <p class="input-title">Atleta 3</p>
+                    <select class="select-field" id="atleta3Nome" name="atleta3Nome" required></select>
                   </div>
                 </div>
                 <div class="atleta">
                   <div>
-                    <p class="input-title" >Atleta 6</p>
-                    <input class="input-field" type="text" id="atleta6Nome" name="atleta6Nome" placeholder="Nome" required/>
+                    <p class="input-title">Atleta 4</p>
+                    <select class="select-field" id="atleta4Nome" name="atleta4Nome" required></select>
                   </div>
                 </div>
               </div>
               <div class="athlete-layer">
                 <div class="atleta">
                   <div>
-                    <p class="input-title" >Atleta 7</p>
-                    <input class="input-field" type="text" id="atleta7Nome" name="atleta7Nome" placeholder="Nome" required/>
+                    <p class="input-title">Atleta 5</p>
+                    <select class="select-field" id="atleta5Nome" name="atleta5Nome" required></select>
                   </div>
                 </div>
                 <div class="atleta">
                   <div>
-                    <p class="input-title" >Atleta 8</p>
-                    <input class="input-field" type="text" id="atleta8Nome" name="atleta8Nome" placeholder="Nome" required/>
+                    <p class="input-title">Atleta 6</p>
+                    <select class="select-field" id="atleta6Nome" name="atleta6Nome" required></select>
+                  </div>
+                </div>
+              </div>
+              <div class="athlete-layer">
+                <div class="atleta">
+                  <div>
+                    <p class="input-title">Atleta 7</p>
+                    <select class="select-field" id="atleta7Nome" name="atleta7Nome" required></select>
+                  </div>
+                </div>
+                <div class="atleta">
+                  <div>
+                    <p class="input-title">Atleta 8</p>
+                    <select class="select-field" id="atleta8Nome" name="atleta8Nome" required></select>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,6 @@
               </div>
               <div >
                 <p class="input-title">Juízes</p>
-                </p>
                 <input
                   class="input-field"
                   type="text"
@@ -142,9 +141,12 @@
             </div>
           </div>
           <div class="side-buttons">
-            <a class="back-button-title" href="home.html">
-              <button type="button" class="back-button">Voltar</button></a
-            >
+            <div class="back-to-landin">
+              <p class="register">
+                <a class="back-link" href="../tela_juiz/home.html">Voltar</a>
+                para o calendário
+              </p>
+            </div>
             <button class="submit-button" type="submit">Cadastrar Partida</button>
           </div>
         </form>

@@ -81,8 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const elements_match = document.createElement('div')
       elements_match.classList.add('elements_match')
 
-      const dataPartida = document.createElement('p')
-      dataPartida.textContent = `Data e Hora: ${partida.datetime}`
+      const dataPartida = document.createElement('p');
+      const dataPartidaFormatada = new Date(partida.datetime).toLocaleDateString();
+      const horaPartidaFormatada = new Date(partida.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      dataPartida.textContent = `Data e Hora: ${dataPartidaFormatada} - ${horaPartidaFormatada}`;
+
+
       dataPartida.classList.add('paragraph-title')
 
       const localPartida = document.createElement('p')

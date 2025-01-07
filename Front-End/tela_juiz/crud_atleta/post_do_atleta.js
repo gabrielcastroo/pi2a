@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Evita o envio padrão do formulário
 
         // Obter valores dos campos do formulário
-        const name = document.getElementById('nomeAtleta').value;
+        const name = document.getElementById('nomeAtleta').value.trim();
         const birth_date = document.getElementById('idadeAtleta').value;
-        const height = parseFloat(document.getElementById('alturaAtleta').value);
-        const weight = parseFloat(document.getElementById('pesoAtleta').value);
-        const best_times = document.getElementById('bestTimes').value;
-        const medal_history = document.getElementById('medalHistory').value;
+        const height = parseFloat(document.getElementById('alturaAtleta').value.trim());
+        const weight = parseFloat(document.getElementById('pesoAtleta').value.trim());
+        const best_times = document.getElementById('bestTimes').value.trim();
+        const medal_history = document.getElementById('medalHistory').value.trim();
         const country = document.getElementById('paisAtleta').value;
-        const team = document.getElementById('equipeAtleta').value;
-        const modality = document.getElementById('esporteAtleta').value;
+        const team = document.getElementById('equipeAtleta').value.trim();
+        const modality = document.getElementById('esporteAtleta').value.trim();
 
         // Coletar especializações selecionadas
         const specializationsElements = document.querySelectorAll('#especializacoes input[type="checkbox"]:checked');

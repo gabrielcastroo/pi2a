@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .addEventListener('submit', async function (event) {
       event.preventDefault() // Evita o envio padrão do formulário
 
-      const nomeAtleta = document.getElementById('nomeAtleta').value
+      const nomeAtleta = document.getElementById('nomeAtleta').value.trim();
       if (nomeAtleta.trim() !== '') {
         // Se o campo de nome não estiver vazio, busca o atleta pelo nome
         await buscarAtletaPorNome(nomeAtleta)

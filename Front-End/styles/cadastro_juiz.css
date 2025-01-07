@@ -162,3 +162,48 @@ img {
   color: white;
   text-decoration: none;
 }
+
+.back-to-landin{
+  display: flex;
+  align-items: center;
+}
+
+.register {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.back-link {
+  color: #8b39dd;
+  transition: color 0.3s;
+}
+
+@media(max-height: 800px){
+
+  .form_container {
+    align-items: center;
+    padding: 2rem 3rem;
+    margin: auto;
+    width: 1000px;
+    /* border: 1px solid black; */
+  }
+
+  .side_form{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .side_buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: -20px;
+  }
+}

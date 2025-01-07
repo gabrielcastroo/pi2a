@@ -82,7 +82,19 @@ img{
 }
 
 .input-field{
-    width: 28rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #C4C4C4;
+    padding-left: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.select-info-field{
+    width: 300px;
     height: 2.5rem;
     border-radius: 12px;
     border: 1px solid #C4C4C4;
@@ -95,7 +107,7 @@ img{
 }
 
 .select-field{
-    width: 260px;
+    width: 400px;
     height: 2.5rem;
     border-radius: 12px;
     border: 1px solid #C4C4C4;
@@ -131,7 +143,7 @@ img{
 }
 
 .submit-button{
-    width: 28rem;
+    width: 100%;
     height: 2.5rem;
     border-radius: 12px;
     background-color: #6030d1;
@@ -144,7 +156,6 @@ img{
     font-size: 16px;
     font-weight: 600;
     font-style: normal;
-    margin-top: 16px;
 }
 
 .back-button{
@@ -167,4 +178,97 @@ img{
 .back-button-title{
     color: white;
     text-decoration: none;
+}
+
+.back-to-landin{
+    display: flex;
+    width: 100%;
+    margin-block: auto;
+}
+
+.register {
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.back-link {
+    color: #8b39dd;
+    transition: color 0.3s;
+}
+
+@media(max-height: 800px){
+  .form-container {
+    padding: 1rem 2rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-field {
+    height: 2.2rem;
+    width: 400px;
+    border-radius: 12px;
+    border: 1px solid #c4c4c4;
+    padding-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .input-info-field {
+    width: 100%;
+    height: 2.2rem;
+    border-radius: 12px;
+    border: 1px solid #c4c4c4;
+    padding-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .select-info-field{
+    width: 250px;
+    height: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #C4C4C4;
+    padding-left: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.select-field{
+    width: 12.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #C4C4C4;
+    padding-left: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+    #atletasContainer{
+        display: flex;
+        flex-direction: row;
+        margin-top: 16px;
+        gap: 8px;
+}
+
+    .athlete-layer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
